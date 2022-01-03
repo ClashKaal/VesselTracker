@@ -1,24 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './Components/Header';
+import GeneralInformation from './Components/GeneralInformation';
+import CourseDetails from './Components/Course_Position';
+import ShipMaster_General from './Components/ShipMaster_General';
+import AverageSpeedGraph from './Components/AverageSpeedGraph';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   return (
+   <>
+    <Header/>
+    {/* <ShipImages/> */}
+    <GeneralInformation/>
+    <CourseDetails/>
+    <AverageSpeedGraph/>
+    <h2> Ship Master Data</h2>
+    <ShipMaster_General/>
+    
+   </>
   );
 }
 
