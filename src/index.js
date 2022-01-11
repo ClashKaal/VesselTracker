@@ -10,4 +10,8 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+ReactDOM.render(
+  document.getElementById('root1')
+);
 reportWebVitals();

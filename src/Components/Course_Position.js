@@ -45,96 +45,19 @@ const Position = (props) => {
     </>
 }
 
-export default function CourseDetails() {
+export default function CourseDetails(props) {
 
-    const [data, setData] = useState([
-        {
-            name: "Position:",
-            value: 3578,
-        },
-        {
-            name: "Navigation Status:",
-            value: 3578,
-        },
-        {
-            name: "Course:",
-            value: 3578,
-        },
-        {
-            name: "Heading:",
-            value: 3578,
-        },
-        {
-            name: "Speed:",
-            value: 3578,
-        },
-        {
-            name: "Max Speed:",
-            value: 3578,
-        },
-        {
-            name: "Status:",
-            value: 3578,
-        },
-        {
-            name: "Location:",
-            value: 3578,
-        },
-        {
-            name: "Area:",
-            value: 3578,
-        }, 
-        {
-            name: "Last Seen:",
-            value: 12,
-        },       
-        {
-            name: "Source:",
-            value: 34,
-        }
-    ]);
+    const [data, setData] = useState([]);
 
     const [gndata, setgndata] = useState([
-        {
-            name: "From:",
-            value: 3578,
-        },
-        {
-            name: "Destination:",
-            value: 3578,
-        },
-        {
-            name: "ETA:",
-            value: 3578,
-        },
-        {
-            name: "Summer Draft:",
-            value: 3578,
-        },
-        {
-            name: "Current Draft:",
-            value: 3578,
-        },
-        {
-            name: "Last Update:",
-            value: 3578,
-        },
-        {
-            name: "Source:",
-            value: 3578,
-        },
-        {
-            name: "Calculated ETA:",
-            value: 12,
-        }
+
     ]);
 
 
-    // useEffect(()=>{
-    //     setData([{
-
-    //     }])
-    // },[]);
+    useEffect(()=>{
+        setData(props.data);
+        setgndata(props.data)
+    },[props.data])
 
 
 
@@ -142,11 +65,11 @@ export default function CourseDetails() {
         <Container fluid="lg">
             <Row>
                 <Col xs={12} sm={12} md={6}>
-                    <Position datas={data} gndata={gndata}/>
+                    <Position datas={props.cpdata1} gndata={props.cpdata2}/>
                 </Col>
 
                 <Col xs={12} sm={12} md={6}>
-                    <VoyageDetails/>
+                    <VoyageDetails data={props.voyageDetails}/>
                 </Col>
             </Row>
         </Container>
