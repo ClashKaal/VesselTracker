@@ -17,6 +17,7 @@ function App() {
   const [coursePosition, setCoursePosition] = useState([]);
   const [coursePosition2, setCoursePosition2] = useState([]);
   const [voyageDetails, setVoyageDetails] = useState([]);
+  const [averageSpeed, setAverageSpeed] = useState([]);
   useEffect(()=>{
     const gnarr = [];
     const gnarr2 = [];
@@ -24,6 +25,7 @@ function App() {
     const cparr = [];
     const cparr2 = [];
     const voyagedetail = [];
+    const speed = [];
     Sample.forEach((ele, index)=>{
         if(index === 0){
             //to get General Information Data
@@ -95,12 +97,14 @@ function App() {
         const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
 
         voyagedetail.push({
-            trackname: ele.trackname,
-            latitude: ele.latitude,
-            longitude: ele.longitude,
+            destinationpoint: ele.destinationpoint,
             sensor_timestamp: sensorRecoderDate,
             recorded_timestamp: RecoderDate,
         })
+
+        speed.push(
+            ele.speed,
+        )
     })
 
     setGeneralInfo(gnarr);
@@ -108,9 +112,12 @@ function App() {
     setCoursePosition(cparr);
     setCoursePosition2(cparr2);
     setVoyageDetails(voyagedetail);
-    console.log(generalInfo);
-    console.log(genralinfo2);
-    console.log(coursePosition);
+    setAverageSpeed(speed);
+    // console.log(averageSpeed);
+    console.log(speed);
+    // console.log(generalInfo);
+    // console.log(genralinfo2);
+    // console.log(coursePosition);
   },[])
    return (
    <>
@@ -118,7 +125,7 @@ function App() {
     {/* <ShipImages/> */}
     <GeneralInformation gndata1={generalInfo} gndata2={genralinfo2}/>
     <CourseDetails cpdata1={coursePosition} cpdata2={coursePosition2} voyageDetails={voyageDetails}/>
-    <AverageSpeedGraph/>
+    <AverageSpeedGraph speedata={averageSpeed}/>
     <h2> Ship Master Data</h2>
     {/* <ShipMaster_General/> */}
     
