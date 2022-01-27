@@ -7,7 +7,7 @@ import {
 import './App.css';
 import Header from './Components/Header';
 import Home from './Containers/Home';
-import ShipIMages from './Components/ShipIMages';
+import ShipImages from './Components/ShipImages';
 
 // import ShipMaster_General from './Components/ShipMaster_General';
 
@@ -20,7 +20,7 @@ function App() {
             <Header />
             <Routes>
                 <Route index path="/" element={<Home />} />
-                <Route path="shipgallery" element={<ShipIMages />} />
+                <Route path="shipgallery" element={<ShipImages />} />
 
             </Routes>
         </>
