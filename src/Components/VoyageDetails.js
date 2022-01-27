@@ -14,18 +14,14 @@ export default function VoyageDetails(props) {
       <Table className="Table-Header" stripped hover size="sm">
         <thead>
           <tr>
-            <th width="700">Trackname</th>
-            <th width="500">Latitute</th>
-            <th width="500">Longitude</th>
-            <th width="200">Sensor timpsatp</th>
-            <th width="200">Recrded timpsatp</th>
+            <th width="300">Ports</th>
+            <th width="200">Sensor timpstamp</th>
+            <th width="200">Recrded timpstamp</th>
           </tr>
         </thead>
         <tbody>
          {props.data.map(ele=> <tr>
-            <td>{ele.trackname}</td>
-            <td>{ele.latitude}</td>
-            <td>{ele.longitude}</td>
+            <td>{ele.destinationpoint}</td>
             <td>{ele.sensor_timestamp}</td>
             <td>{ele.recorded_timestamp}</td>
           </tr> )}     

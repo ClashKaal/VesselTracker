@@ -5,6 +5,7 @@ import  Row from 'react-bootstrap/Row'
 
 import  Col from 'react-bootstrap/Col';
 import ship from '../assets/Ship-and-boat-1.png'
+import { Link } from 'react-router-dom';
 
 const Information = (props) => {
 
@@ -45,6 +46,9 @@ const Information = (props) => {
 
 const ShipGallery = (props) => {
     return <>
+    <Link to="/shipgallery">
+    ShipGallery
+    </Link>
         <Image fluid={true} src={ship}/>
     </>
 }

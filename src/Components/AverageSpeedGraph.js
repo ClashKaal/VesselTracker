@@ -46,46 +46,57 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-export const data = {
-    labels,
-    datasets: [
-    {
-        label: 'Daily Average Speed',
-        data: [9,8,7,0.2,5,4,3],
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-    ],
-};
+// export const data = {
+//     labels,
+//     datasets: [
+//     {
+//         label: 'Daily Average Speed',
+//         data: [9,8,7,0.2,5,4,3],
+//         backgroundColor: 'rgba(4,98,143,0.64)',
+//     },
+//     {
+//         label: 'Daily Speed',
+//         data: [99,8,7,12,5,4,67],
+//         backgroundColor: 'rgba(143,76,4,0.64)',
+//     },
+//     ],
+// };
   
   
 function AverageSpeedGraph(props) {
-
 
     const [datasets, setDatasets] = useState(
         {
             labels,
             datasets: [
-            {
-                label: 'Distance Travelled',
-                data: [9,8,7,0.2,5,4,3],
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            },
-            ],
+                {
+                    label: 'Daily Average Speed',
+                    // data: [],
+                    data: [9,8,7,0.2,5,4,3],
+                    backgroundColor: 'rgba(4,98,143,0.64)',
+                },
+                // {
+                //     label: 'Daily Speed',
+                //     data: [99,8,7,12,5,4,67], 
+                //     backgroundColor: 'rgba(143,76,4,0.64)',
+                // },
+                ],
         }
     );
 
-    // useEffect(()=> {
-    //     axios.get(url).then(res=>{
-    //        setDatasets(prevState=>({
-    //            ...prevState,
-    //            datasets:[
-    //                ...prevState.datasets,
-    //            ]
-    //        })) 
-    //     }).catch(error=>{
-
-    //     })
-    // },[]);
+    useEffect(() => {
+        setDatasets(prevState => ({
+            ...prevState,
+            datasets: [
+                {
+                    label: 'Daily Average Speed',
+                    // data: [],
+                    data: props.speedata,
+                    backgroundColor: 'rgba(4,98,143,0.64)',
+                }
+            ]
+        }))
+    },[props.speedata])
 
     return (
         <Container fluid="lg">
