@@ -25,20 +25,20 @@ export default function Home() {
             if (index === 0) {
                 //to get General Information Data
                 const gn = {
-                    Trackname: ele.trackname,
-                    IMO: ele.imo_no,
-                    MMSI: ele.mmsi_no,
-                    Callsign: ele.call_sign,
-                    Width: ele.width,
-                    Length: ele.length,
-                    Gross_Tonnage: ele.vessel_tonnage
+                    "Trackname: ": ele.trackname,
+                    "IMO: ": ele.imo_no,
+                    "MMSI: ": ele.mmsi_no,
+                    "Callsign: ": ele.call_sign,
+                    "Width: ": ele.width,
+                    "Length: ": ele.length,
+                    "Gross tonnage: ": ele.vessel_tonnage
                 };
 
                 const gn2 = {
-                    sourcetype_name: ele.source_type_name,
-                    track_type_name: ele.track_type_name,
-                    country_name: ele.country_name,
-                    owner_unit_name: ele.owner_unit_name
+                    "Source type: ": ele.source_type_name,
+                    "Track type: ": ele.track_type_name,
+                    "Flag: ": ele.country_name,
+                    "Owner unit: ": ele.owner_unit_name
                 };
 
                 Object.keys(gn).map((key, index) => {
@@ -59,20 +59,21 @@ export default function Home() {
 
                 //to set Course_Position Data
                 const cp1 = {
-                    navigation_status: ele.navigation_status,
-                    course: ele.course,
-                    latitude: ele.latitude,
-                    longitude: ele.longitude,
-                    speed: ele.speed,
-                    status: ele.status,
-                    source_type_name: ele.source_type_name
+                    "Navigational Status: ": ele.navigation_status,
+                    "Course: ": ele.course,
+                    "Latitude: ": ele.latitude,
+                    "Longitude: ": ele.longitude,
+                    "Speed: ": ele.speed,
+                    "Status: ": ele.status,
+                    "Source type: ": ele.source_type_name
                 };
 
+                const updateDate = moment(ele.updated_on * 1000).format("DD/MM/YYYY HH:mm");
                 const cp2 = {
-                    destinationpoint: ele.destinationpoint,
-                    eta: ele.eta,
-                    navigation_status: ele.navigation_status,
-                    updated_on: ele.updated_on,
+                    "Destination: ": ele.destinationpoint,
+                    "ETA: ": ele.eta,
+                    // navigation_status: ele.navigation_status,
+                    "Last update: ": updateDate,
                 }
 
                 Object.keys(cp1).map((key, index) => {

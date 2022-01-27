@@ -7,6 +7,8 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ship from '../assets/Ship-and-boat-1.png'
 import galleryIcon from '../assets/icons/gallery.png'
+import videoIcon from '../assets/icons/video-camera.png'
+
 const Information = (props) => {
 
     return <>
@@ -46,14 +48,14 @@ const Information = (props) => {
 
 const ShipGallery = (props) => {
     return <>
-        <Link to="/shipgallery">
+        <Link to="/shipgallery" title="Photo Gallery">
             <Button variant="light">
                 <img src={galleryIcon} alt="image-gallery" width="30px" />
             </Button>
         </Link>
         <Link to="/shipgallery">
-            <Button variant="light">
-                Videos
+            <Button variant="light" title="Video Gallery">
+                <img src={videoIcon} alt="video-gallery" width="30px" />
             </Button>
         </Link>
         <Image fluid={true} src={ship} />

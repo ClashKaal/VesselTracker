@@ -15,6 +15,8 @@ import Image from 'react-bootstrap/Image'
 import  Row from 'react-bootstrap/Row'
 import  Col from 'react-bootstrap/Col';
 import DistanceTravelledGraph from './DistanceTravelledGraph';
+import Sample from '../Sample_Data/Sample.json';
+import moment from 'moment';
 
 
 ChartJS.register(
@@ -45,25 +47,10 @@ export const options = {
 };
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-// export const data = {
-//     labels,
-//     datasets: [
-//     {
-//         label: 'Daily Average Speed',
-//         data: [9,8,7,0.2,5,4,3],
-//         backgroundColor: 'rgba(4,98,143,0.64)',
-//     },
-//     {
-//         label: 'Daily Speed',
-//         data: [99,8,7,12,5,4,67],
-//         backgroundColor: 'rgba(143,76,4,0.64)',
-//     },
-//     ],
-// };
   
   
 function AverageSpeedGraph(props) {
+    const speed = [];
 
     const [datasets, setDatasets] = useState(
         {
@@ -84,9 +71,49 @@ function AverageSpeedGraph(props) {
         }
     );
 
+    // useEffect(() => {
+    //     axios.get("",{
+
+    //     }).then(response => {
+    //         console.log('api', response)
+    //         let speeddata = [];
+    //         const time = [];
+    //         response.data.map(ele => {
+    //             speeddata.push(ele.speed)
+    //             const sensorRecoderDate = moment(ele.sensor_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
+    //             const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
+    //             time.push(RecoderDate)
+    //     })
+    // setDatasets(prevState => ({
+    //             ...prevState,
+    //             labels: time,
+    //             datasets: [
+    //                 {
+    //                     label: 'Daily Average Speed',
+    //                     // data: [],
+    //                     data: props.speedata,
+    //                     backgroundColor: 'rgba(4,98,143,0.64)',
+    //                 }
+    //             ]
+    //         }))
+    //     }).catch(err => {
+
+    //     })
+
+    // },[])
+    //     ,[props.speedata])
+
+    const time = [];
+
+    Sample.forEach((ele, index) => {
+        const sensorRecoderDate = moment(ele.sensor_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
+        const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
+        time.push(RecoderDate)
+    })
     useEffect(() => {
         setDatasets(prevState => ({
             ...prevState,
+            labels: time,
             datasets: [
                 {
                     label: 'Daily Average Speed',
@@ -97,6 +124,7 @@ function AverageSpeedGraph(props) {
             ]
         }))
     },[props.speedata])
+
 
     return (
         <Container fluid="lg">

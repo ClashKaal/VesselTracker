@@ -7,7 +7,7 @@ export default function Header() {
     <Navbar bg="dark" variant="dark">
       <Container maxWidth="md">
         <Navbar.Brand href="#home">
-          Vessel Tracker
+          IMSAS
         </Navbar.Brand>
       </Container>
     </Navbar>
