@@ -3,8 +3,8 @@ import './Header.css'
 
 export default function Header() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light background-color:red">
-         <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg" style={{backgroundColor:"blue"}}>
+         <div className="container">
           <a className="navbar-brand" href="#">IMSAS</a>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
