@@ -16,7 +16,10 @@ const Information = (props) => {
         <Row>
             <Col xs={12} sm={12} md={6}>
                 <Row>
-                    {props.datas.map(ele => <>
+                    {props.datas.map(ele => {
+
+                        return<>
+
                         <Col xs={12} sm={12} md={6}>
                             <p> {ele.name}</p>
                         </Col>
@@ -25,6 +28,7 @@ const Information = (props) => {
                             <p> {ele.value} </p>
                         </Col>
                     </>
+                    }
                     )}
                 </Row>
             </Col>
@@ -35,14 +39,33 @@ const Information = (props) => {
                             <p> {ele.name}</p>
                         </Col>
 
-                        <Col xs={12} sm={12} md={6}>
-                            <p> {ele.value} </p>
+                        <Col xs={12} sm={12} md={6} >
+                            <p > {ele.value} </p>
                         </Col>
                     </>
                     )}
                 </Row>
             </Col>
         </Row>
+
+        {/* <Row>   
+        <Col xs={12} sm={12} md={6}>
+            <Row>
+            <h3>Anomaly Status</h3>
+                {props.ardata.map(ele => 
+                <>
+                <Col xs={12} sm={12} md={6}>
+                    <p> {ele.name}</p>
+                </Col>
+
+                <Col xs={12} sm={12} md={6}>
+                    <p> {ele.value}</p>
+                </Col>
+               </>
+                )}
+            </Row>                
+        </Col>
+        </Row> */}
     </>
 }
 
@@ -69,88 +92,17 @@ export default function GeneralInformation(props) {
     // });
 
     // const [fetchedData, setFecthedData] = useState([]);
-    const [data, setData] = useState([
-        [{
-            name: "IMO",
-            value: 3578,
-        },
-        {
-            name: "MMSI",
-            value: 3578,
-        },
-        {
-            name: "Callsign",
-            value: 3578,
-        },
-        {
-            name: "Width",
-            value: 3578,
-        },
-        {
-            name: "Length",
-            value: 3578,
-        },
-        {
-            name: "DeadWeight",
-            value: 3578,
-        },
-        {
-            name: "Gross Tonnage",
-            value: 3578,
-        },
-        {
-            name: "TEU",
-            value: 3578,
-        },
-        {
-            name: "Liquid Capacity",
-            value: 3578,
-        },
-        {
-            name: "Year of build:",
-            value: 12,
-        },
-        {
-            name: "Class:",
-            value: 34,
-        }
-        ]]);
+    const [data, setData] = useState([]);
 
-    const [gndata, setgndata] = useState([
-        {
-            name: "AIS type:",
-            value: 3578,
-        },
-        {
-            name: "Ship type:",
-            value: 3578,
-        },
-        {
-            name: "Flag:",
-            value: 3578,
-        },
-        {
-            name: "Builder:",
-            value: 3578,
-        },
-        {
-            name: "Owner:",
-            value: 3578,
-        },
-        {
-            name: "Operator:",
-            value: 3578,
-        },
-        {
-            name: "Insurer:",
-            value: 3578,
-        },
-    ]);
+    const [gndata, setgndata] = useState([]);
 
-    useEffect(() => {
-        setData(props.data);
-        setgndata(props.data)
-    }, [props.data])
+    // const [ardata, setardata] = useState([]);
+
+    // useEffect(() => {
+    //     setData(props.data);
+    //     setgndata(props.data);
+    //     setardata(props.data)
+    // }, [props.data])
 
 
     // const handleUploadData = (data) =>{
@@ -212,7 +164,7 @@ export default function GeneralInformation(props) {
                 </Col>
 
                 <Col xs={12} sm={12} md={6}>
-                    <Information datas={props.gndata1} gndata={props.gndata2} />
+                    <Information datas={props.gndata1} gndata={props.gndata2}/>
                 </Col>
             </Row>
         </Container>

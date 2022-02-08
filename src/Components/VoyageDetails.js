@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 export default function VoyageDetails(props) {
         return (
-          <div>
+          <>
        
       <h1>Latest Ports</h1>
        
@@ -17,6 +17,7 @@ export default function VoyageDetails(props) {
             <th width="300">Ports</th>
             <th width="200">Sensor timpstamp</th>
             <th width="200">Recrded timpstamp</th>
+            <th width="200">Duration</th>
           </tr>
         </thead>
         <tbody>
@@ -24,10 +25,11 @@ export default function VoyageDetails(props) {
             <td>{ele.destinationpoint}</td>
             <td>{ele.sensor_timestamp}</td>
             <td>{ele.recorded_timestamp}</td>
+            <td>{ele.Duration}</td>
           </tr> )}     
         </tbody>
       </Table>
-          </div>
+          </>
         );
 
 

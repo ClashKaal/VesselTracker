@@ -14,7 +14,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-ReactDOM.render(
-  document.getElementById('root1')
-);
+// ReactDOM.render(
+//   document.getElementById('root1')
+// );
 reportWebVitals();

@@ -46,7 +46,7 @@ export const options = {
     },
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labels = [];
   
   
 function AverageSpeedGraph(props) {
@@ -104,13 +104,28 @@ function AverageSpeedGraph(props) {
     //     ,[props.speedata])
 
     const time = [];
-
+    // var newspeed=0;
+    // const newspeed1=[];
     Sample.forEach((ele, index) => {
-        const sensorRecoderDate = moment(ele.sensor_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
-        const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
-        time.push(RecoderDate)
+        // const sensorRecoderDate = moment(ele.sensor_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
+        const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY");
+        time.push(RecoderDate);
     })
     useEffect(() => {
+        // for (var t = 0; t < time.length;){
+        //     if(time.length > 1){
+        //         if (time[t] === time[t+1]){
+        //             newspeed = newspeed + parseFloat(props.speedata[t+1]);
+        //             props.speedata.splice(t,1);
+        //             time.splice(t,1);
+        //         }
+        //         else{
+        //             newspeed1.push(newspeed);
+        //             t++;
+        //             newspeed = parseFloat(props.speedata[t]);
+        //         }
+        //     }
+        // }
         setDatasets(prevState => ({
             ...prevState,
             labels: time,
