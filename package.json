@@ -2,6 +2,7 @@
   "name": "vt",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://192.168.1.9/VesselTracker/restAPI/TrackInfo",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
@@ -27,7 +28,7 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "SET PORT=7000 && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

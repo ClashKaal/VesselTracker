@@ -4,7 +4,9 @@ import CourseDetails from '../Components/Course_Position'
 import GeneralInformation from '../Components/GeneralInformation'
 import AnomalyDetails from '../Components/AnomalyDetails'
 import axios from 'axios'
-
+import {
+    useLocation
+}from "react-router-dom";
 import Sample2 from '../Sample_Data/sample2.json'
 import Sample1 from '../Sample_Data/Sample1.json'
 import moment from 'moment';
@@ -65,6 +67,19 @@ const country_code = (code) => {
 }
 
 export default function Home() {
+
+    // const Location=useLocation()
+    // const a = Location.search.split("&");
+    // const mmsi_no=a[1].split("=").at(1)
+    // const imo_no=a[2].split("=").at(1)
+    // let newurl=`http://192.168.11.130:8090/TrafficAnalysis/restAPI/TrackInfo?&mmsi_no=${mmsi_no}&imo_no=${imo_no}`;
+    // console.log(newurl)
+    // useEffect(() => {
+    //     axios.get(newurl).then((response) =>{
+    //         console.log(response)
+    //         setanomalydetails(response.data.anomaly_details);     
+    //     })
+    // },[])
     const [generalInfo, setGeneralInfo] = useState([]);
     const [genralinfo2, setGenralInfo2] = useState([]);
     // const [anomaly, setanomaly] = useState([]);
