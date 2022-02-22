@@ -1,0 +1,9 @@
+#collapse1{
+    /* text-align:justify; */
+    overflow-y:scroll;
+    height:300px;
+}
+
+#verificationrow{
+    display: block;
+}

@@ -1,0 +1,10 @@
+#Anomalytable thead
+{
+    display: block;
+}
+#Anomalytable tbody 
+{
+    display: block;
+   overflow: auto;
+   max-height: 200px;
+}

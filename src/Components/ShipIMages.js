@@ -9,7 +9,7 @@ import img4 from '../assets/Ship-and-boat-1.png';
 function ImageCard({ title, description, src }) {
     return (
         <Card style={{ width: '100%', marginBottom: "20px" }}>
-            <Card.Img variant="top" src={src} style={{ height: "150px", objectFit: "cover" }} />
+            <Card.Img variant="top" src={src} style={{ height: "150px", objectFit: "cover"}} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Text>

@@ -7,6 +7,9 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import ship from '../assets/Ship-and-boat-1.png'
 import galleryIcon from '../assets/icons/gallery.png'
+import videoIcon from '../assets/icons/video-camera.png'
+// import axios from 'axios';
+
 const Information = (props) => {
 
     return <>
@@ -14,7 +17,8 @@ const Information = (props) => {
         <Row>
             <Col xs={12} sm={12} md={6}>
                 <Row>
-                    {props.datas.map(ele => <>
+                    {props.datas.map(ele => {
+                    return<>
                         <Col xs={12} sm={12} md={6}>
                             <p> {ele.name}</p>
                         </Col>
@@ -23,6 +27,7 @@ const Information = (props) => {
                             <p> {ele.value} </p>
                         </Col>
                     </>
+                     }
                     )}
                 </Row>
             </Col>
@@ -46,14 +51,14 @@ const Information = (props) => {
 
 const ShipGallery = (props) => {
     return <>
-        <Link to="/shipgallery">
+        <Link to="/shipgallery" title="Photo Gallery">
             <Button variant="light">
-                <img src={galleryIcon} alt="image-gallery" width="30px" />
+                <img src={galleryIcon} alt="Image_Gallery" width="30px" />
             </Button>
         </Link>
         <Link to="/shipgallery">
-            <Button variant="light">
-                Videos
+            <Button variant="light" title="Video Gallery">
+                <img src={videoIcon} alt="Video_Gallery" width="30px" />
             </Button>
         </Link>
         <Image fluid={true} src={ship} />
@@ -67,90 +72,25 @@ export default function GeneralInformation(props) {
     // });
 
     // const [fetchedData, setFecthedData] = useState([]);
-    const [data, setData] = useState([
-        [{
-            name: "IMO",
-            value: 3578,
-        },
-        {
-            name: "MMSI",
-            value: 3578,
-        },
-        {
-            name: "Callsign",
-            value: 3578,
-        },
-        {
-            name: "Width",
-            value: 3578,
-        },
-        {
-            name: "Length",
-            value: 3578,
-        },
-        {
-            name: "DeadWeight",
-            value: 3578,
-        },
-        {
-            name: "Gross Tonnage",
-            value: 3578,
-        },
-        {
-            name: "TEU",
-            value: 3578,
-        },
-        {
-            name: "Liquid Capacity",
-            value: 3578,
-        },
-        {
-            name: "Year of build:",
-            value: 12,
-        },
-        {
-            name: "Class:",
-            value: 34,
-        }
-        ]]);
+    // const [data, setData] = useState([
+    //     ]);
 
-    const [gndata, setgndata] = useState([
-        {
-            name: "AIS type:",
-            value: 3578,
-        },
-        {
-            name: "Ship type:",
-            value: 3578,
-        },
-        {
-            name: "Flag:",
-            value: 3578,
-        },
-        {
-            name: "Builder:",
-            value: 3578,
-        },
-        {
-            name: "Owner:",
-            value: 3578,
-        },
-        {
-            name: "Operator:",
-            value: 3578,
-        },
-        {
-            name: "Insurer:",
-            value: 3578,
-        },
-    ]);
+    // const [gndata, setgndata] = useState([
+    // ]);
 
-    useEffect(() => {
-        setData(props.data);
-        setgndata(props.data)
-    }, [props.data])
+    // const [adata, setadata] = useState([
+    // ]);
 
+    // const [agndata, setagndata] = useState([
+    // ]);
 
+    // useEffect(() => {
+    //     setData(props.data);
+    //     setgndata(props.data)
+    // }, [props.data])
+
+    
+    
     // const handleUploadData = (data) =>{
     // console.log('line 143 from general info', data)
     // console.log(Sample)
@@ -188,29 +128,15 @@ export default function GeneralInformation(props) {
 
     return (
         <Container fluid="lg">
-
-            {/* <Row> */}
-            {/* <Col xs={12}> */}
-            {/* {fetchedData.map((eachElement, index, array)=>{
-                        console.log(eachElement);
-                        console.log(index);
-                        console.log(array)
-                        return <div style={{backgroundColor:"#eeeeee", margin:"10px", padding:"10px", borderRadius:"5px"}}>
-                                <div style={{color:"#007bff", fontWeight:"500"}} key={`${new Date().getTime()}-ruby`}>Country Name : {eachElement.country_name}</div>
-                                <div style={{color:"#007bff", fontWeight:"500"}} key={`${new Date().getTime()}-python`}>IMO : {eachElement.imo_no}</div>
-                                <div style={{color:"#007bff", fontWeight:"500"}} key={`${new Date().getTime()}-js`}>Speed : {eachElement.speed} m/s</div>
-                                <div style={{color:"#007bff", fontWeight:"500"}} key={`${new Date().getTime()}-java`}>ID: {eachElement.uuid}</div>
-                            </div>
-                    })} */}
-            {/* </Col> */}
-            {/* </Row> */}
             <Row>
                 <Col xs={12} sm={12} md={6}>
                     <ShipGallery />
                 </Col>
-
+                
                 <Col xs={12} sm={12} md={6}>
+                    <Row>
                     <Information datas={props.gndata1} gndata={props.gndata2} />
+                    </Row>
                 </Col>
             </Row>
         </Container>

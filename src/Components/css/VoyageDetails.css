@@ -1,0 +1,9 @@
+#Voyagetable tbody, #Voyagetable thead
+{
+    display: block;
+}
+#Voyagetable tbody 
+{
+   overflow: auto;
+   height: 850px;
+}

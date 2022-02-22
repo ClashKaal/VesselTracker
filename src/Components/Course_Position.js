@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import  Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
 import  Row from 'react-bootstrap/Row'
 import  Col from 'react-bootstrap/Col';
 
 import VoyageDetails from './VoyageDetails';
+import AnomalyDetails from './AnomalyDetails';
+import VerificationDetails from './VerificationDetails';
 
 const Position = (props) => {
-
-    console.log(props)
-
     return <>
     <h1>Course/Position</h1>
         <Row>
@@ -41,6 +39,11 @@ const Position = (props) => {
                 )}
                 </Row>  
             </Col>
+            
+            <Col xs={12} sm={12} md={12}>
+            <AnomalyDetails adata1={props.adata}/>
+                <VerificationDetails vdata1={props.vdata}/>   
+            </Col>
         </Row>
     </>
 }
@@ -59,13 +62,11 @@ export default function CourseDetails(props) {
         setgndata(props.data)
     },[props.data])
 
-
-
     return (
         <Container fluid="lg">
             <Row>
                 <Col xs={12} sm={12} md={6}>
-                    <Position datas={props.cpdata1} gndata={props.cpdata2}/>
+                    <Position datas={props.cpdata1} gndata={props.cpdata2} adata={props.anomalydetails} vdata={props.verificationdetails}/>
                 </Col>
 
                 <Col xs={12} sm={12} md={6}>
