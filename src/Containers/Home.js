@@ -61,12 +61,14 @@ const country_code = (code) => {
 
         default:
             break;
-    } 
+    }
 }
 
-    export default function Home() {
+export default function Home() {
     const [generalInfo, setGeneralInfo] = useState([]);
     const [genralinfo2, setGenralInfo2] = useState([]);
+    // const [anomaly, setanomaly] = useState([]);
+    // const [verification, setverification] = useState([]);
     const [coursePosition, setCoursePosition] = useState([]);
     const [coursePosition2, setCoursePosition2] = useState([]);
     const [anomalydetails, setanomalydetails] = useState([]);
@@ -76,14 +78,15 @@ const country_code = (code) => {
     // const [anomalystat, setanamolystat] = useState([]);
     useEffect(() => {
         let url = "https://api.github.com/users/defunkt"
-        axios.get(url).then((response) =>{
+        axios.get(url).then((response) => {
             console.log(response)
         })
-    },[])
+    }, [])
     useEffect(() => {
         const gnarr = [];
         const gnarr2 = [];
-
+        // const asarr = [];
+        // const vfarr = [];
         const cparr = [];
         const cparr2 = [];
 
@@ -93,7 +96,7 @@ const country_code = (code) => {
         const voyagedetail = [];
         const speed = [];
 
-  
+
 
         // var myObject = Sample1
         // var count = Object.keys(myObject).length;
@@ -110,166 +113,180 @@ const country_code = (code) => {
             // console.log(ele)
             // console.log(count)
             // if (index === 0) {
-                
-                // console.log(index)
-                //to get General Information Data
-                const gn = {
+
+            // console.log(index)
+            //to get General Information Data
+            const gn = {
+                "Trackname": ele.last_reported.trackname,
+                "IMO": ele.last_reported.imo_no,
+                "MMSI": ele.last_reported.mmsi_no,
+                "Callsign": ele.last_reported.call_sign,
+                "Width": ele.last_reported.width,
+                "Anomaly status": ele.last_reported.anomaly_status,
+                "Anomaly array: ": country_code(ele.last_reported.anomaly_array.split(",")[0]),
+                // "Anomaly array": ele.anomaly_array,
+            };
+            if (ele.anomaly_status === "false" || ele.anomaly_status === "") {
+                gn = {
+                    "Trackname": ele.trackname,
+                    "IMO": ele.imo_no,
+                    "MMSI": ele.mmsi_no,
+                    "Callsign": ele.call_sign,
+                    "Width": ele.width,
+                    "Anomaly status": ele.anomaly_status,
+                };
+            }
+
+            if (ele.last_reported.anomaly_status === "false" || ele.last_reported.anomaly_status === "") {
+                gn = {
                     "Trackname": ele.last_reported.trackname,
                     "IMO": ele.last_reported.imo_no,
                     "MMSI": ele.last_reported.mmsi_no,
                     "Callsign": ele.last_reported.call_sign,
                     "Width": ele.last_reported.width,
                     "Anomaly status": ele.last_reported.anomaly_status,
-                    "Anomaly array: ": country_code(ele.last_reported.anomaly_array.split(",")[0]),
-                    // "Anomaly array": ele.anomaly_array,
                 };
-
-                if(ele.last_reported.anomaly_status === "false" || ele.last_reported.anomaly_status === ""){
-                    gn = {
-                         "Trackname": ele.last_reported.trackname,
-                         "IMO": ele.last_reported.imo_no,
-                         "MMSI": ele.last_reported.mmsi_no,
-                         "Callsign": ele.last_reported.call_sign,
-                         "Width": ele.last_reported.width,
-                         "Anomaly status": ele.last_reported.anomaly_status,
-                     };
-                 }
+            }
 
 
-                const verificationtime = moment(ele.last_reported.verification_time * 1000).format("DD/MM/YYYY HH:mm");
-                const gn2 = {
-                    "Length: ": ele.last_reported.length,
-                    "Gross tonnage: ": ele.last_reported.vessel_tonnage,
-                    // "Source type: ": ele.source_type_name,
-                    "Track type: ": ele.last_reported.track_type_name,
-                    "Flag: ": ele.last_reported.country_name,
-                    "Verification flag: ": ele.last_reported.verification_flag,
-                    "Verification time: ": verificationtime,
-                };
+            const verificationtime = moment(ele.last_reported.verification_time * 1000).format("DD/MM/YYYY HH:mm");
+            const gn2 = {
+                "Length: ": ele.last_reported.length,
+                "Gross tonnage: ": ele.last_reported.vessel_tonnage,
+                // "Source type: ": ele.source_type_name,
+                "Track type: ": ele.last_reported.track_type_name,
+                "Flag: ": ele.last_reported.country_name,
+                "Verification flag: ": ele.last_reported.verification_flag,
+                "Verification time: ": verificationtime,
+            };
 
-                Object.keys(gn).map((key, index) => {
-                    // console.log(key)
-                    // console.log(gn[key])
-                    gnarr.push({
-                        name: key,
-                        value: gn[key],
-                    })
+            Object.keys(gn).map((key, index) => {
+                // console.log(key)
+                // console.log(gn[key])
+                gnarr.push({
+                    name: key,
+                    value: gn[key],
                 })
-                Object.keys(gn2).map((key, index) => {
-                    gnarr2.push({
-                        name: key,
-                        value: gn2[key],
-                    })
+            })
+            Object.keys(gn2).map((key, index) => {
+                console.log(key)
+                console.log(gn2[key])
+                gnarr2.push({
+                    name: key,
+                    value: gn2[key],
                 })
-                // console.log(gn)
-                // console.log(gn2)
-                // console.log(gnarr)
-                // console.log(gnarr2)
+            })
+            // console.log(gn)
+            // console.log(gn2)
+            // console.log(gnarr)
+            // console.log(gnarr2)
 
-                //to set Course_Position Data
-                const cp1 = {
-                    "Navigational Status: ": ele.last_reported.navigation_status,
-                    "Course: ": ele.last_reported.course,
-                    "Latitude: ": ele.last_reported.latitude,
-                    "Longitude: ": ele.last_reported.longitude,
-                    "Speed: ": ele.last_reported.speed,
-                    // "Status: ": ele.status,
-                    // "Source type: ": ele.source_type_name
-                };
+            //to set Course_Position Data
+            const cp1 = {
+                "Navigational Status: ": ele.last_reported.navigation_status,
+                "Course: ": ele.last_reported.course,
+                "Latitude: ": ele.last_reported.latitude,
+                "Longitude: ": ele.last_reported.longitude,
+                "Speed: ": ele.last_reported.speed,
+                // "Status: ": ele.status,
+                // "Source type: ": ele.source_type_name
+            };
 
-                const updateDate = moment(ele.last_reported.updated_on * 1000).format("DD/MM/YYYY HH:mm");
-                const cp2 = {
-                    "Status: ": ele.last_reported.status,
-                    "Source type: ": ele.last_reported.source_type_name,
-                    "Destination: ": ele.last_reported.destinationpoint,
-                    // "ETA: ": ele.last_reported.eta,
-                    // navigation_status: ele.navigation_status,
-                    "Last update: ": updateDate,
-                }
-                // console.log(cp1)
-                // console.log(cp2)
+            const updateDate = moment(ele.last_reported.updated_on * 1000).format("DD/MM/YYYY HH:mm");
+            const cp2 = {
+                "Status: ": ele.last_reported.status,
+                "Source type: ": ele.last_reported.source_type_name,
+                "Destination: ": ele.last_reported.destinationpoint,
+                // "ETA: ": ele.last_reported.eta,
+                // navigation_status: ele.navigation_status,
+                "Last update: ": updateDate,
+            }
+            // console.log(cp1)
+            // console.log(cp2)
 
-                Object.keys(cp1).map((key, index) => {
-                    cparr.push({
-                        name: key,
-                        value: cp1[key],
-                    })
+            Object.keys(cp1).map((key, index) => {
+                cparr.push({
+                    name: key,
+                    value: cp1[key],
                 })
-                Object.keys(cp2).map((key, index) => {
-                    cparr2.push({
-                        name: key,
-                        value: cp2[key],
-                    })
+            })
+            Object.keys(cp2).map((key, index) => {
+                cparr2.push({
+                    name: key,
+                    value: cp2[key],
                 })
-                // console.log(cparr)
-                // console.log(cparr2)
-                
-                // if(ele.anomaly_status === "false"){
-                //     gnarr.pop();
-                // }
-                // else{
-                //     const a = ele.anomaly_array.substring(1, 4)
-                //     if(a === "102"){
-                //         gnarr.splice(gnarr.length-1, 1)
+            })
+            // console.log(cparr)
+            // console.log(cparr2)
 
-                //     }
-                //     console.log(a)
-                // }
+            // if(ele.anomaly_status === "false"){
+            //     gnarr.pop();
             // }
-            
+            // else{
+            //     const a = ele.anomaly_array.substring(1, 4)
+            //     if(a === "102"){
+            //         gnarr.splice(gnarr.length-1, 1)
 
-            for(var i = 0; i < ele['Voyage Details'].length; i++){
+            //     }
+            //     console.log(a)
+            // }
+            // }
+
+
+            for (var i = 0; i < ele['Voyage Details'].length; i++) {
                 var count = ele['Voyage Details'].length;
-            // console.log(count);
-            const sensorRecoderDate = moment(ele['Voyage Details'][i].from * 1000).format("DD/MM/YY HH:mm");
-            // console.log(sensorRecoderDate)
-            const RecoderDate = moment(ele['Voyage Details'][i].to * 1000).format("DD/MM/YY HH:mm");
-            // console.log(RecoderDate)
-            const dur=ele['Voyage Details'][i].duration;
-            var d = Math.floor((dur/3600)/24)
-            var h = Math.floor((dur/3600) % 24)
-            var m = Math.floor((dur/60)%60)
-            var s = Math.floor(dur % 60)
-            const dur1 = d +"d " + h + "h "+ m + "m " + s + "s"
-            voyagedetail.push({
+                // console.log(count);
+                const sensorRecoderDate = moment(ele['Voyage Details'][i].from * 1000).format("DD/MM/YY HH:mm");
+                // console.log(sensorRecoderDate)
+                const RecoderDate = moment(ele['Voyage Details'][i].to * 1000).format("DD/MM/YY HH:mm");
+                // console.log(RecoderDate)
+                const dur = ele['Voyage Details'][i].duration;
+                var d = Math.floor((dur / 3600) / 24)
+                var h = Math.floor((dur / 3600) % 24)
+                var m = Math.floor((dur / 60) % 60)
+                var s = Math.floor(dur % 60)
+                const dur1 = d + "d " + h + "h " + m + "m " + s + "s"
+                voyagedetail.push({
 
-                destination: ele['Voyage Details'][i].destinationpoint,
-                Arrival: sensorRecoderDate,
-                Departure: RecoderDate,
-                Duration: dur1,
-            })
-        }
+                    destination: ele['Voyage Details'][i].destinationpoint,
+                    Arrival: sensorRecoderDate,
+                    Departure: RecoderDate,
+                    Duration: dur1,
+                })
+            }
 
-            for(i = 0; i < ele.anomaly_details.length; i++){
-            const fromdate = moment(ele.anomaly_details[i].from * 1000).format("DD/MM/YY HH:mm");
-            const todate = moment(ele.anomaly_details[i].to * 1000).format("DD/MM/YY HH:mm");
-            const dur=ele.anomaly_details[i].duration;
-            var d = Math.floor((dur/3600)/24)
-            var h = Math.floor((dur/3600) % 24)
-            var m = Math.floor((dur/60)%60)
-            var s = Math.floor(dur % 60)
-            const dur1 = d +"d " + h + "h "+ m + "m " + s + "s"
-            anomalydetail.push({
+            for (i = 0; i < ele.anomaly_details.length; i++) {
+                const fromdate = moment(ele.anomaly_details[i].from * 1000).format("DD/MM/YY HH:mm");
+                const todate = moment(ele.anomaly_details[i].to * 1000).format("DD/MM/YY HH:mm");
+                const dur = ele.anomaly_details[i].duration;
+                var d = Math.floor((dur / 3600) / 24)
+                var h = Math.floor((dur / 3600) % 24)
+                var m = Math.floor((dur / 60) % 60)
+                var s = Math.floor(dur % 60)
+                const dur1 = d + "d " + h + "h " + m + "m " + s + "s"
+                anomalydetail.push({
 
-                anomaly: ele.anomaly_details[i].anomaly_array,
-                status: country_code(ele.anomaly_details[i].anomaly_array.split(",")[0]),
-                from: fromdate,
-                to: todate,
-                Duration: dur1,
-            })
-        }
+                    anomaly: ele.anomaly_details[i].anomaly_array,
+                    status: country_code(ele.anomaly_details[i].anomaly_array.split(",")[0]),
+                    from: fromdate,
+                    to: todate,
+                    Duration: dur1,
+                })
+            }
 
-        for(i = 0; i < ele.verification_details.length; i++){
-            const time = moment(ele.verification_details[i].verification_time * 1000).format("DD/MM/YY HH:mm");
-            verificationdetail.push({
-                anomaly: time,
-                status: ele.verification_details[i].verification_flag,
-            })
-        }
+            for (i = 0; i < ele.verification_details.length; i++) {
+                const time = moment(ele.verification_details[i].verification_time * 1000).format("DD/MM/YY HH:mm");
+                verificationdetail.push({
+                    anomaly: time,
+                    status: ele.verification_details[i].verification_flag,
+                })
+            }
         })
 
         setGeneralInfo(gnarr);
         setGenralInfo2(gnarr2);
+        // setanomaly(asarr);
+        // setverification(vfarr);
         setCoursePosition(cparr);
         setCoursePosition2(cparr2);
         setanomalydetails(anomalydetail);
@@ -279,7 +296,7 @@ const country_code = (code) => {
     return (
         <>
             <GeneralInformation gndata1={generalInfo} gndata2={genralinfo2} />
-            <CourseDetails cpdata1={coursePosition} cpdata2={coursePosition2} voyageDetails={voyageDetails} anomalydetails={anomalydetails} verificationdetails={verificationdetails}/>
+            <CourseDetails cpdata1={coursePosition} cpdata2={coursePosition2} voyageDetails={voyageDetails} anomalydetails={anomalydetails} verificationdetails={verificationdetails} />
             <AverageSpeedGraph />
         </>
     )

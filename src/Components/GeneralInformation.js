@@ -18,16 +18,16 @@ const Information = (props) => {
             <Col xs={12} sm={12} md={6}>
                 <Row>
                     {props.datas.map(ele => {
-                    return<>
-                        <Col xs={12} sm={12} md={6}>
-                            <p> {ele.name}</p>
-                        </Col>
+                        return <>
+                            <Col xs={12} sm={12} md={6}>
+                                <p> {ele.name}</p>
+                            </Col>
 
-                        <Col xs={12} sm={12} md={6}>
-                            <p> {ele.value} </p>
-                        </Col>
-                    </>
-                     }
+                            <Col xs={12} sm={12} md={6}>
+                                <p> {ele.value} </p>
+                            </Col>
+                        </>
+                    }
                     )}
                 </Row>
             </Col>
@@ -38,14 +38,33 @@ const Information = (props) => {
                             <p> {ele.name}</p>
                         </Col>
 
-                        <Col xs={12} sm={12} md={6}>
-                            <p> {ele.value} </p>
+                        <Col xs={12} sm={12} md={6} >
+                            <p > {ele.value} </p>
                         </Col>
                     </>
                     )}
                 </Row>
             </Col>
         </Row>
+
+        {/* <Row>   
+        <Col xs={12} sm={12} md={6}>
+            <Row>
+            <h3>Anomaly Status</h3>
+                {props.ardata.map(ele => 
+                <>
+                <Col xs={12} sm={12} md={6}>
+                    <p> {ele.name}</p>
+                </Col>
+
+                <Col xs={12} sm={12} md={6}>
+                    <p> {ele.value}</p>
+                </Col>
+               </>
+                )}
+            </Row>                
+        </Col>
+        </Row> */}
     </>
 }
 
@@ -89,8 +108,8 @@ export default function GeneralInformation(props) {
     //     setgndata(props.data)
     // }, [props.data])
 
-    
-    
+
+
     // const handleUploadData = (data) =>{
     // console.log('line 143 from general info', data)
     // console.log(Sample)
@@ -132,10 +151,10 @@ export default function GeneralInformation(props) {
                 <Col xs={12} sm={12} md={6}>
                     <ShipGallery />
                 </Col>
-                
+
                 <Col xs={12} sm={12} md={6}>
                     <Row>
-                    <Information datas={props.gndata1} gndata={props.gndata2} />
+                        <Information datas={props.gndata1} gndata={props.gndata2} />
                     </Row>
                 </Col>
             </Row>

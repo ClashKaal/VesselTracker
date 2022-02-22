@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
 // import axios from "axios";
 import {
-Chart as ChartJS,
-CategoryScale,
-LinearScale,
-BarElement,
-Title,
-Tooltip,
-Legend,
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
 } from 'chart.js';
 import zoomPlugin from 'chartjs-plugin-zoom';
 import { Bar } from 'react-chartjs-2';
-import  Container from 'react-bootstrap/Container'
+import Container from 'react-bootstrap/Container'
 // import Image from 'react-bootstrap/Image'
-import  Row from 'react-bootstrap/Row'
-import  Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col';
 import DistanceTravelledGraph from './DistanceTravelledGraph';
 import Sample from '../Sample_Data/Sample.json';
 import Sample1 from '../Sample_Data/Sample1.json';
@@ -30,21 +30,21 @@ ChartJS.register(
     Legend,
     zoomPlugin
 );
-  
+
 export const options = {
-    responsive: true, 
+    responsive: true,
     plugins: {
         zoom: {
             zoom: {
-              wheel: {
-                enabled: true,
-              },
-            //   drag:{
-            //       enabled: true,
-            //   },
-              mode: 'x',
+                wheel: {
+                    enabled: true,
+                },
+                //   drag:{
+                //       enabled: true,
+                //   },
+                mode: 'x',
             }
-          },
+        },
         legend: {
             position: 'top',
         },
@@ -61,8 +61,8 @@ export const options = {
 };
 
 const labels = [];
-  
-  
+
+
 function AverageSpeedGraph(props) {
     // const speed = [];
 
@@ -74,14 +74,14 @@ function AverageSpeedGraph(props) {
                     // label: 'Daily Average Speed',
                     // // data: [],
                     // data: [9,8,7,0.2,5,4,3],
-                //     backgroundColor: 'rgba(4,98,143,0.64)',
-                // },
-                // {
-                //     label: 'Daily Speed',
-                //     data: [99,8,7,12,5,4,67], 
-                //     backgroundColor: 'rgba(143,76,4,0.64)',
+                    //     backgroundColor: 'rgba(4,98,143,0.64)',
+                    // },
+                    // {
+                    //     label: 'Daily Speed',
+                    //     data: [99,8,7,12,5,4,67], 
+                    //     backgroundColor: 'rgba(143,76,4,0.64)',
                 },
-                ],
+            ],
         }
     );
 
@@ -98,7 +98,6 @@ function AverageSpeedGraph(props) {
     //             const RecoderDate = moment(ele.recorded_timestamp * 1000).format("DD/MM/YYYY  HH:mm");
     //             time.push(RecoderDate)
     //     })
-
     // setDatasets(prevState => ({
     //             ...prevState,
     //             labels: time,
@@ -128,12 +127,12 @@ function AverageSpeedGraph(props) {
     //     time.push(RecoderDate)
     // })
 
-    Sample1.forEach((ele,index) => {
+    Sample1.forEach((ele, index) => {
         // console.log(ele.kinematic_details)
         var count1 = ele.kinematic_details.length
         // console.log(count1)
 
-        for (var i = 0; i < count1; i++){
+        for (var i = 0; i < count1; i++) {
             time.push(ele.kinematic_details[i].date)
             speed.push(ele.kinematic_details[i].avgSpeed)
         }
@@ -142,6 +141,20 @@ function AverageSpeedGraph(props) {
     // console.log(speed) 
 
     useEffect(() => {
+        // for (var t = 0; t < time.length;){
+        //     if(time.length > 1){
+        //         if (time[t] === time[t+1]){
+        //             newspeed = newspeed + parseFloat(props.speedata[t+1]);
+        //             props.speedata.splice(t,1);
+        //             time.splice(t,1);
+        //         }
+        //         else{
+        //             newspeed1.push(newspeed);
+        //             t++;
+        //             newspeed = parseFloat(props.speedata[t]);
+        //         }
+        //     }
+        // }
         setDatasets(prevState => ({
             ...prevState,
             labels: time,
@@ -154,17 +167,18 @@ function AverageSpeedGraph(props) {
                 }
             ]
         }))
-    },[])
+    }, [])
+
 
     return (
         <Container fluid="lg">
             <Row>
                 <Col xs={12} sm={12} md={6}>
-                 <Bar options={options} data={datasets} />
+                    <Bar options={options} data={datasets} />
                 </Col>
 
                 <Col xs={12} sm={12} md={6}>
-                    <DistanceTravelledGraph/>
+                    <DistanceTravelledGraph />
                 </Col>
             </Row>
         </Container>
